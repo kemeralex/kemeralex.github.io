@@ -26,8 +26,12 @@ const resources = {
   svgSprite: "src/assets/svg-sprite/*.svg",
   static: [
     "src/assets/icons/**/*.*",
+    "src/assets/favicons/**/*.*",
     "src/assets/fonts/**/*.{woff,woff2}",
-    
+    "src/assets/video/**/*.{mp4,webm}",
+    "src/assets/audio/**/*.{mp3,ogg,wav,aac}",
+    "src/json/**/*.json",
+    "src/php/**/*.php"
   ]
 };
 // Gulp Tasks:
@@ -104,10 +108,10 @@ function images() {
       imagemin([
         imagemin_gifsicle({ interlaced: true }),
         imagemin_mozjpeg({ quality: 100, progressive: true }),
-        imagemin_optipng({ optimizationLevel: 5 })
+        imagemin_optipng({ optimizationLevel: 3 })
       ])
     )
-    .pipe(gulp.dest('dist/assets/images'));
+    .pipe(gulp.dest("dist/assets/images"));
 }
 function svgSprite() {
   return gulp
